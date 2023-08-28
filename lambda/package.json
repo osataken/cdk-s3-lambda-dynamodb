@@ -1,0 +1,7 @@
+{
+  "name": "file-processing",
+  "version": "0.1.0",
+  "dependencies": {
+    "csv-parse": "5.4.0"
+  }
+}
