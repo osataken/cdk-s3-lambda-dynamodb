@@ -21,7 +21,7 @@ export class CdkS3LambdaDynamodbStack extends cdk.Stack {
         handler: 'file_processing.handler',
     });
 
-    const transactionTable = new dynamodb.Table(this, 'TransactionTable', {
+    const BookCatalogueTable = new dynamodb.Table(this, 'BookCatalogue', {
         tableName: 'BookCatalogue',
         partitionKey: {
             name: 'book_id',
@@ -32,6 +32,6 @@ export class CdkS3LambdaDynamodbStack extends cdk.Stack {
     incomingBucket.addEventNotification(s3.EventType.OBJECT_CREATED, new s3n.LambdaDestination(fileProcessingLambda));
     incomingBucket.grantRead(fileProcessingLambda);
 
-    transactionTable.grantReadWriteData(fileProcessingLambda);
+    BookCatalogueTable.grantReadWriteData(fileProcessingLambda);
   }
 }
